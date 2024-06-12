@@ -9,6 +9,7 @@ from torch.testing._internal.common_utils import skipIfRocm
 from vllm.model_executor.layers.quantization.compressed_tensors.compressed_tensors import (  # noqa: E501
     CompressedTensorsLinearMethod, CompressedTensorsW8A8StaticTensor)
 
+
 @skipIfRocm
 def test_compressed_tensors_w8a8_static_setup(vllm_runner):
     model_path = "nm-testing/tinyllama-one-shot-static-quant-test-compressed"
