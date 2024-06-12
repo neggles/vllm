@@ -11,6 +11,7 @@ from vllm.model_executor.layers.quantization.compressed_tensors.compressed_tenso
     CompressedTensorsLinearMethod, CompressedTensorsW8A8DynamicToken,
     CompressedTensorsW8A8StaticTensor)
 
+
 @skipIfRocm
 def test_compressed_tensors_w8a8_static_setup(vllm_runner):
     model_path = "nm-testing/tinyllama-oneshot-w8a8-static-v2"
@@ -40,6 +41,7 @@ def test_compressed_tensors_w8a8_static_setup(vllm_runner):
         assert qkv_proj.weight_scale.logical_widths is not None
         assert qkv_proj.input_scale.dtype is torch.float32
 
+
 @skipIfRocm
 def test_compressed_tensors_no_enforce_eager(vllm_runner):
     model_path = "nm-testing/tinyllama-oneshot-w8a8-static-v2"
@@ -47,6 +49,7 @@ def test_compressed_tensors_no_enforce_eager(vllm_runner):
         sampling_params = SamplingParams()
         output = llm.generate("Hello world!", sampling_params=sampling_params)
         assert output
+
 
 @skipIfRocm
 def test_compressed_tensors_w8a8_dynanmic_per_token(vllm_runner):
